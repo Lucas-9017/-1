@@ -1,15 +1,16 @@
 class Bal {
-    constructor(xBal, yBal, xSpeed, ySpeed, diameter) {
+    constructor(xBal, yBal, xSpeed, ySpeed, diameter, kleur) {
         this.x = xBal;
         this.y = yBal;
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.diameter = diameter;
+        this.kleur = kleur;
     }
 
     show() {
         noStroke();
-        fill(255, 0, 0);
+        fill(this.kleur);
         ellipse(this.x, this.y, this.diameter, this.diameter);
     }
 
@@ -36,19 +37,39 @@ class Blok {
     }
 
     show() {
-        noStoke();
-        fill(0, 0, 255);
+        noStroke();
+        fill(0, 0, 0);
         rect(this.x, this.y, this.breedte, this.hoogte);
     }
 }
 
-var ballen = [new Bal(100, 100, 7, 5, 80),
-              new Bal(200, 100, 7, 5, 80),
-              new Bal(300, 100, 7, 5, 80),
-              new Bal(400, 100, 7, 5, 80),
-              new Bal(500, 100, 7, 5, 80)];
+var ballen = [new Bal(100, 100, 7, 9, 10, "red"),
+              new Bal(200, 100, 2, 3, 30, "yellow"),
+              new Bal(300, 100, 10, 12, 40, "green"),
+              new Bal(400, 100, 6, 8, 80, "red"),
+              new Bal(500, 100, 4, 10, 45, "yellow")];
 
-var blokken = [new Blok(500, 500, 50, 10)];
+var blokken = [new Blok(100, 50, 120, 30),
+               new Blok(100, 100, 120, 30),
+               new Blok(100, 150, 120, 30),
+               new Blok(100, 200, 120, 30),
+               new Blok(100, 250, 120, 30),
+               new Blok(100, 300, 120, 30),
+               new Blok(100, 350, 120, 30),
+               new Blok(100, 400, 120, 30),
+               new Blok(250, 50, 120, 30)];
+
+/*
+
+var blokken = [for (var j = 0; j < 8; j++) {
+                   for (var i = 0; i < 12; i++) {
+        
+    }
+}
+
+];
+
+*/
 
 function setup() {
     createCanvas(1280, 720);
@@ -61,5 +82,10 @@ function draw() {
         var bal = ballen[i];
         bal.show()
         bal.update()
+    }
+
+    for (var i = 0; i < blokken.length; i++) {
+        var blok = blokken[i];
+        blok.show()
     }
 }
